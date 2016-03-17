@@ -3,6 +3,7 @@ package Senpai.YandereForge.Kurumis;
 import Senpai.YandereForge.Handlers.Kurumi;
 import Senpai.YandereForge.Handlers.KurumiUtils;
 import Senpai.YandereForge.Yandere;
+import net.minecraftforge.fml.common.Loader;
 
 /**
  * Created by anonc on 17.03.2016.
@@ -11,7 +12,8 @@ import Senpai.YandereForge.Yandere;
 public class Hammer extends Kurumi {
     @Override
     public void InitModDeps() {
-        System.out.println("Mod Inisiated: Hammer");
+        if(Loader.isModLoaded("tconstruct"))
+            System.out.println("Tinkers construct loaded");
         super.InitModDeps();
     }
 }
