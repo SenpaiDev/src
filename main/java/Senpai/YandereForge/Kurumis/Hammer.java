@@ -13,7 +13,7 @@ public class Hammer extends Kurumi {
     @Override
     public void InitModDeps() {
         if(Loader.isModLoaded("tconstruct"))
-            System.out.println("Tinkers construct loaded I can now do seettings spesific");
+            System.out.println("Tinkers construct loaded I can now do seettings spesific :D");
         super.InitModDeps();
     }
 }
