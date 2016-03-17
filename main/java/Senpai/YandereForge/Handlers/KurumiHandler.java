@@ -1,5 +1,6 @@
 package Senpai.YandereForge.Handlers;
 
+import net.minecraftforge.event.world.ChunkDataEvent;
 import net.minecraftforge.fml.common.Loader;
 import org.reflections.Reflections;
 
@@ -20,33 +21,39 @@ public class KurumiHandler {
                 }
             });
 
-    public KurumiManager() throws IllegalAccessException, InstantiationException {
-        Reflections reflections = new Reflections("senpai.Kurunmis");
+    public KurumiHandler() throws IllegalAccessException, InstantiationException {
+        Reflections reflections = new Reflections("Senpai.YandereForge.Kurumis");
         Set<Class<? extends Kurumi>> classes = reflections.getSubTypesOf(Kurumi.class);
         for (Class<? extends Kurumi> class1 : classes) {
-            Kurumi kurunmi = class1.newInstance();
-            if(kurunmi.getModDep().length() < 1){
-                if(kurunmi.getModSetDep().length() < 1){
-                    System.out.println(kurunmi.getName() + " Has no additional Settings and was fully loaded");
-                } else if(Loader.isModLoaded(kurunmi.getModSetDep())){
-                    System.out.println(kurunmi.getName() + " Has Additional features for the mod " + kurunmi.getModSetDep() + "they where loaded" );
-                    kurunmi.setModSetDepLoaded(true);
-                } else {
-                    System.out.println(kurunmi.getName() + " Has additional features for the mod " + kurunmi.getModSetDep() + " You need to install this mod to use them");
-                }
-                System.out.println(kurunmi.getName() +", has no mod dependancys and was loaded");
-                System.out.println(kurunmi.GetIsModSetDepLoaded() ? "yes" : "no");
-                Kurunmis.put(kurunmi.getName(), kurunmi);
-            } else if(Loader.isModLoaded(kurunmi.getModDep())){
-                System.out.println(kurunmi.getName() + "'s dependency of " + kurunmi.getModDep() + " was found and loaded");
-                Kurunmis.put(kurunmi.getName(), kurunmi);
+            Kurumi kurumi = class1.newInstance();
+            if(kurumi.getModDep().length() < 1){
+                Kurunmis.put(kurumi.getName(), kurumi);
+            } else if(Loader.isModLoaded(kurumi.getModDep())){
+                Kurunmis.put(kurumi.getName(), kurumi);
             } else {
-                System.out.println(kurunmi.getName() + " Is dependent on " + kurunmi.getModDep() + " Please install this mod to use this feature");
+                System.out.println(kurumi.getName() +" Is dependent on" + kurumi.getModDep() + " And has been disabled due to it not being installed");
             }
-
+            checkforaddionalsets(kurumi);
         }
     }
-
+    public void checkforaddionalsets(Kurumi kurumi){
+        System.out.println("Looking for deps on " + kurumi.getName());
+        if(kurumi.getModSetDepCount() < 1){
+            System.out.println(kurumi.getName() + " Has no Additional settings");
+            return;
+        } else {
+            for (int x=1; x <= kurumi.getModSetDepCount(); x++){
+                if(Loader.isModLoaded(kurumi.getModSetDep(x))){
+                    System.out.println(x);
+                    System.out.println(kurumi.getModSetDep(x) + "Was found");
+                    kurumi.setModSetDepReturned(x, true);
+                } else {
+                    System.out.println(x);
+                    System.out.println(kurumi.getModSetDep(x) + " Was not found, features related to it has been disabled");
+                }
+            }
+        }
+    }
     public Kurumi getKurunmiByName(String name){
         return Kurunmis.get(name);
     }
