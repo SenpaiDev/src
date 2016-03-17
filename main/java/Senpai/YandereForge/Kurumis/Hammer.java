@@ -7,12 +7,11 @@ import Senpai.YandereForge.Yandere;
 /**
  * Created by anonc on 17.03.2016.
  */
-@Kurumi.index(name = "Hammer", neko = Kurumi.Nekos.combat, desc = "Hammer", ModSetDepCount = 2, ModSetDep = "tconstruct : buildcraft")
+@Kurumi.index(name = "Hammer", neko = Kurumi.Nekos.combat, desc = "Hammer")
 public class Hammer extends Kurumi {
-    public void hammer(){
-        if(Yandere.instance.kurumiHandler.getKurunmiByName("Hammer").getModSetDepReturned(1)){
-
-        }
+    @Override
+    public void InitModDeps() {
+        System.out.println("Mod Inisiated: Hammer");
+        super.InitModDeps();
     }
-
 }

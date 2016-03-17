@@ -33,9 +33,10 @@ public class KurumiHandler {
             } else {
                 System.out.println(kurumi.getName() +" Is dependent on" + kurumi.getModDep() + " And has been disabled due to it not being installed");
             }
-            checkforaddionalsets(kurumi);
+            kurumi.InitModDeps();
         }
     }
+    /*
     public void checkforaddionalsets(Kurumi kurumi){
         System.out.println("Looking for deps on " + kurumi.getName());
         if(kurumi.getModSetDepCount() < 1){
@@ -54,6 +55,7 @@ public class KurumiHandler {
             }
         }
     }
+    */
     public Kurumi getKurunmiByName(String name){
         return Kurunmis.get(name);
     }
