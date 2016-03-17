@@ -17,7 +17,7 @@ public class Yandere {
     public static Yandere instance;
 
     @Mod.EventHandler
-    public void Preinit(FMLPreInitializationEvent fmlInitializationEvent) throws IllegalAccessException, InstantiationException {
+    public void Preinit(FMLPreInitializationEvent fmlInitializationEvent) {
         instance = this;
     }
 
