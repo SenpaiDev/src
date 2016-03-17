@@ -19,6 +19,9 @@ public class Kurumi {
     private int ModSetDepCount = getClass().getAnnotation(index.class).ModSetDepCount();
     private boolean IsModSetDepLoaded = getClass().getAnnotation(index.class).IsmodSetDepLoaded();
     public boolean[] ModSetDepReturned = getClass().getAnnotation(index.class).ModSetDepReturned();
+
+    private boolean enabeld;
+
     public enum Nekos {
         testing,
         combat;
@@ -49,6 +52,26 @@ public class Kurumi {
 
     }
 
+    public void setEnabeld(boolean enabeld) {
+        if(this.enabeld != enabeld){
+        onToggle();
+        }
+        this.enabeld = enabeld;
+        if(enabeld){
+            onEnable();
+        } else if(!enabeld){
+            onDisable();
+        }
+    }
+    public void onToggle(){
+
+    }
+    public void onEnable(){
+
+    }
+    public void onDisable(){
+
+    }
     public Nekos getNeko() {
         return neko;
     }
