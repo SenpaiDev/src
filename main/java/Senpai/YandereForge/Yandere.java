@@ -1,6 +1,7 @@
 package Senpai.YandereForge;
 
 import Senpai.YandereForge.Handlers.KurumiHandler;
+import com.darkmagician6.eventapi.EventManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -35,7 +36,7 @@ public class Yandere {
     }
     @SubscribeEvent
     public void tickevent (TickEvent.ClientTickEvent clientTickEvent){
-        System.out.println("Tick");
+        EventManager.call(new com.darkmagician6.eventapi.events.TickEvent());
     }
 
 }
