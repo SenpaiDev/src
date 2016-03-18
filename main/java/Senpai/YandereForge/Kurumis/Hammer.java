@@ -7,11 +7,12 @@ import com.darkmagician6.eventapi.EventManager;
 import com.darkmagician6.eventapi.EventTarget;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.lwjgl.input.Keyboard;
 
 /**
  * Created by anonc on 17.03.2016.
  */
-@Kurumi.index(name = "Hammer", neko = Kurumi.Nekos.combat, desc = "Hammer")
+@Kurumi.index(name = "Hammer", neko = Kurumi.Nekos.combat, desc = "Hammer", keybind = Keyboard.KEY_I)
 public class Hammer extends Kurumi {
     @Override
     public void InitModDeps() {

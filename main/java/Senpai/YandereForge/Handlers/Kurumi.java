@@ -1,5 +1,11 @@
 package Senpai.YandereForge.Handlers;
 
+import com.darkmagician6.eventapi.EventTarget;
+import com.darkmagician6.eventapi.events.KeyEvent;
+import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import org.lwjgl.input.Keyboard;
+
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
@@ -15,6 +21,7 @@ public class Kurumi {
     private final String syntax = getClass().getAnnotation(index.class).syntax();
     private final String help = getClass().getAnnotation(index.class).help();
     private final String ModDep = getClass().getAnnotation(index.class).ModDep();
+    private final int keybind = getClass().getAnnotation(index.class).keybind();
     private boolean IsModSetDepLoaded = getClass().getAnnotation(index.class).IsmodSetDepLoaded();
     private boolean enabeld;
 
@@ -43,6 +50,7 @@ public class Kurumi {
         // Features for the mod requierd by hacks
         boolean IsmodSetDepLoaded() default false;
 
+        int keybind() default Keyboard.KEY_NONE;
     }
 
     public void setEnabeld(boolean enabeld) {
@@ -70,6 +78,13 @@ public class Kurumi {
 
     }
 
+    public int getKeybind() {
+        return keybind;
+    }
+
+    public void toggle(){
+        this.setEnabeld(!this.enabeld);
+    }
     public Nekos getNeko() {
         return neko;
     }

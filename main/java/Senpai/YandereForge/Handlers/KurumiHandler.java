@@ -1,5 +1,8 @@
 package Senpai.YandereForge.Handlers;
 
+import com.darkmagician6.eventapi.EventManager;
+import com.darkmagician6.eventapi.EventTarget;
+import com.darkmagician6.eventapi.events.KeyEvent;
 import net.minecraftforge.event.world.ChunkDataEvent;
 import net.minecraftforge.fml.common.Loader;
 import org.reflections.Reflections;
@@ -35,6 +38,7 @@ public class KurumiHandler {
             }
             kurumi.InitModDeps();
         }
+        EventManager.register(this);
     }
     /*
     public void checkforaddionalsets(Kurumi kurumi){
@@ -55,7 +59,12 @@ public class KurumiHandler {
             }
         }
     }
+
     */
+@EventTarget
+public void onkey(KeyEvent keyEvent){
+
+}
     public Kurumi getKurunmiByName(String name){
         return Kurunmis.get(name);
     }
