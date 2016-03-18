@@ -35,7 +35,7 @@ public class Yandere {
     }
     @SubscribeEvent
     public void tickevent (TickEvent.ClientTickEvent clientTickEvent){
-
+        System.out.println("Tick");
     }
 
 }
