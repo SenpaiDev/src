@@ -1,7 +1,9 @@
 package Senpai.YandereForge.Handlers;
 
+import com.darkmagician6.eventapi.EventManager;
 import com.darkmagician6.eventapi.EventTarget;
 import com.darkmagician6.eventapi.events.KeyEvent;
+import com.darkmagician6.eventapi.events.TickEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.input.Keyboard;
@@ -13,7 +15,7 @@ import java.lang.annotation.RetentionPolicy;
  * Created by anonc on 17.03.2016.
  */
 
-public class Kurumi {
+public class Kurumi{
     private final String name = getClass().getAnnotation(index.class).name();
     private final String desc = getClass().getAnnotation(index.class).desc();
     private final Nekos neko = getClass().getAnnotation(index.class).neko();
@@ -23,7 +25,8 @@ public class Kurumi {
     private final String ModDep = getClass().getAnnotation(index.class).ModDep();
     private final int keybind = getClass().getAnnotation(index.class).keybind();
     private boolean IsModSetDepLoaded = getClass().getAnnotation(index.class).IsmodSetDepLoaded();
-    private boolean enabeld;
+    private boolean enabeld = false;
+
 
     public enum Nekos {
         testing,
@@ -77,6 +80,12 @@ public class Kurumi {
     public void InitModDeps(){
 
     }
+    @EventTarget
+    public void ontick(TickEvent tickEvent){
+        System.out.println("Tick");
+    }
+
+
 
     public int getKeybind() {
         return keybind;

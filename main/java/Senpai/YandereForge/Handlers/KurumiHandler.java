@@ -1,5 +1,6 @@
 package Senpai.YandereForge.Handlers;
 
+import Senpai.YandereForge.Kurumis.Hammer;
 import com.darkmagician6.eventapi.EventManager;
 import com.darkmagician6.eventapi.EventTarget;
 import com.darkmagician6.eventapi.events.KeyEvent;
@@ -38,7 +39,6 @@ public class KurumiHandler {
             }
             kurumi.InitModDeps();
         }
-        EventManager.register(this);
     }
     /*
     public void checkforaddionalsets(Kurumi kurumi){
@@ -61,10 +61,12 @@ public class KurumiHandler {
     }
 
     */
-@EventTarget
-public void onkey(KeyEvent keyEvent){
 
-}
+
+    public Kurumi getKurumiByClass(Class<?> kurumi){
+        System.out.println("Meme");
+        return Kurunmis.get(kurumi.getAnnotation(Kurumi.index.class).name());
+    }
     public Kurumi getKurunmiByName(String name){
         return Kurunmis.get(name);
     }

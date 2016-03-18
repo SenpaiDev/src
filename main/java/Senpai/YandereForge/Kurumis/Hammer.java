@@ -10,7 +10,7 @@ import org.lwjgl.input.Keyboard;
 /**
  * Created by anonc on 17.03.2016.
  */
-@Kurumi.index(name = "Hammer", neko = Kurumi.Nekos.combat, desc = "Hammer", ModDep = "adada")
+@Kurumi.index(name = "Hammer", neko = Kurumi.Nekos.combat, desc = "Hammer", keybind = Keyboard.KEY_O)
 public class Hammer extends Kurumi {
     @Override
     public void InitModDeps() {
@@ -30,6 +30,6 @@ public class Hammer extends Kurumi {
     }
     @EventTarget
     public void onTick(TickEvent event){
-        System.out.println("Tick");
+        System.out.println("Tick From hammer fak");
     }
 }
