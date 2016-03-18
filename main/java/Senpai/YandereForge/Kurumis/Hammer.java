@@ -1,8 +1,6 @@
 package Senpai.YandereForge.Kurumis;
 
 import Senpai.YandereForge.Handlers.Kurumi;
-import Senpai.YandereForge.Handlers.KurumiUtils;
-import Senpai.YandereForge.Yandere;
 import com.darkmagician6.eventapi.EventManager;
 import com.darkmagician6.eventapi.EventTarget;
 import net.minecraftforge.fml.common.Loader;
@@ -12,7 +10,7 @@ import org.lwjgl.input.Keyboard;
 /**
  * Created by anonc on 17.03.2016.
  */
-@Kurumi.index(name = "Hammer", neko = Kurumi.Nekos.combat, desc = "Hammer", keybind = Keyboard.KEY_I)
+@Kurumi.index(name = "Hammer", neko = Kurumi.Nekos.combat, desc = "Hammer", ModDep = "adada")
 public class Hammer extends Kurumi {
     @Override
     public void InitModDeps() {
